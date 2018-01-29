@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Leaflet Map</title>
+
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+
+    <!-- Add the Leaflet JavaScript library -->
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+
+</head>
+<body>
+
+  <!-- Our web map and content will go here -->
+  <div id="map" style="width: 900px; height: 600px"></div>
+
+  <script>
+
+    // Create variable to hold map element, give initial settings to map
+    var map = L.map('map', {
+        center: [37.223701, -80.418647],
+        zoom: 16
+    });
+
+    // Add OpenStreetMap tile layer to map element
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    // Create point feature for War Memorial Hall
+    var myDataPoint = L.marker([37.226319, -80.420654]).addTo(map);
+
+    // Create line feature for the Route from War Memorial Hall to Lane Stadium
+    var myDataLine = L.polyline([[37.225648, -80.420748], [37.224749, -80.420285], [37.224096, -80.420967], [37.222647, -80.420212], [37.221348, -80.419498],[37.220788, -80.418973]],
+      {color: 'maroon', weight: 5}).addTo(map);
+
+    // Create area feature for Lane Stadium on the map
+    var myArea = L.polygon([[37.220900, -80.419289],[37.220970, -80.416833], [37.218914, -80.416623], [37.218911, -80.419331],],
+      {color: 'orange', weight: 5}).addTo(map);
+
+  </script>
+</body>
+</html>
