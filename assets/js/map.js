@@ -40,3 +40,10 @@ function onMapClick(event) {
 }
 // Listen for a click event on the map element
 map.on("click", onMapClick);
+
+// load GeoJSON from an external file
+L.geoJson.ajax("assets/data/geog371.geojson", {
+  onEachFeature: function(feature, layer) {
+    layer.bindPopup(feature.properties.name);
+  }
+}).addTo(map);
